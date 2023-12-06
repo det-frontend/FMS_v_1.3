@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "FMS",
+    "slug": "realtimefms",
+    "version": "1.0.0",
+    "orientation": "landscape",
+    "icon": "./assets/adaptive-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.digital.fuelstation",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "eddd2b25-c192-4245-8d1c-a85772808fe5"
+      }
+    },
+    "owner": "thuranyi"
+  }
+}
