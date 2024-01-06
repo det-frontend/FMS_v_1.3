@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -30,9 +28,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "eddd2b25-c192-4245-8d1c-a85772808fe5"
+        "projectId": "fa59da70-dd2c-47a2-b49a-023088915070"
       }
     },
-    "owner": "thuranyi"
+    "owner": "htoo_khant002"
   }
 }

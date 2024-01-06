@@ -35,7 +35,7 @@ function LoginBox({ navigation }) {
     password: Yup.string().required().min(4).label('Password')
   });
 
-
+      
   const handleSubmit = async ({ email, password }) => {
 
     const result = await authApi.login(email, password);
