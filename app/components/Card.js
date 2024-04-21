@@ -228,6 +228,8 @@ function Card({
     }, 3000);
   };
 
+
+
   const handlePermit = async () => {
     if (
       premitFormInfo.couObjId == undefined &&
@@ -252,7 +254,7 @@ function Card({
         premitFormInfo.couObjId,
         obj.daily_price
       );
-        
+
       setLoading(false);
 
       if (permitObject) {
@@ -557,7 +559,7 @@ function Card({
   //   };
   // }, []);
   // active?noPermit?color.bottomActiveNavigation:final?"#f1c40f":nozzleActive?color.activeColor:color.danger:color.bottomActiveNavigation
-
+  console.log(obj, ".......................");
   return (
     <>
       <TouchableOpacity
@@ -725,6 +727,7 @@ function Card({
             permitButtonDisable={permitButtonDisable}
           />
         )}
+        
       </ModelPopUp>
     </>
   );

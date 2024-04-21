@@ -185,7 +185,7 @@ const RealTimeCounting = ({
           </AppText>
           <CustomerPicker
             selectedItem={customer}
-            // setCustomer(customer)  
+            // setCustomer(customer)
             onSelectedItem={(customer) => setCustomer(customer)}
             items={customer}
             customer

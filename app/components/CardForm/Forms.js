@@ -1,23 +1,21 @@
 //import liraries
-import React, { Component,useEffect,useState, } from 'react';
-import { View, StyleSheet,Text,Image,ActivityIndicator } from 'react-native';
-import AppText from '../AppText';
-import CustomerPicker from '../CustomerPicker';
-import PaymentMethod from '../PaymentMethod';
-import AppTextInput from '../AppTextInput';
-import Button from '../Button';
-import AppPicker from '../AppPicker';
-import color from '../../config/color';
-import {MaterialCommunityIcons} from '@expo/vector-icons'
-
+import React, { Component, useEffect, useState } from "react";
+import { View, StyleSheet, Text, Image, ActivityIndicator } from "react-native";
+import AppText from "../AppText";
+import CustomerPicker from "../CustomerPicker";
+import PaymentMethod from "../PaymentMethod";
+import AppTextInput from "../AppTextInput";
+import Button from "../Button";
+import AppPicker from "../AppPicker";
+import color from "../../config/color";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const customers = [
-    {
-        cou_name: 'Individual Customer',
-        cou_id: ''
-    }
+  {
+    cou_name: "Individual Customer",
+    cou_id: "",
+  },
 ];
-
 
 const categories = [
   { label: "Cycle", value: 1 },
@@ -52,110 +50,136 @@ const categories = [
   { label: "Station Use", value: 30 },
 ];
 // create a component
-const RealTimeForms = ({handlePermit,setPremitFormInfo,permitState,chooseOne,permitButtonDisable}) => {
-    const [customer, setCustomer] = useState(customers[0]);
-    const[category,setCategory]=useState(categories[0]);
-    const [carNo, setCarNo] = useState('-');
-    const [paymentNo, setPyamentNo] = useState('Cash');
-    const [carNoForm, setCarNoForm] = useState(false);
+const RealTimeForms = ({
+  handlePermit,
+  setPremitFormInfo,
+  permitState,
+  chooseOne,
+  permitButtonDisable,
+}) => {
+  const [customer, setCustomer] = useState(customers[0]);
+  const [category, setCategory] = useState(categories[0]);
+  const [carNo, setCarNo] = useState("-");
+  const [paymentNo, setPyamentNo] = useState("Cash");
+  const [carNoForm, setCarNoForm] = useState(false);
 
-    useEffect(() => { 
-
-        if (category.label === "Cycle") {
-            setCarNoForm(false);
-        } else if (category.label !== "Cycle") { 
-            setCarNoForm(true);
-        }
-        setPremitFormInfo({
-            couObjId: customer._id,
-            couName: customer.cou_name,
-            cou_id: customer.cou_id,
-            vehicleType: category.label,
-            carNo: carNo,
-            cashType: paymentNo
-        });
-        
-      
-
-    }, [customer, category, carNo,paymentNo])
-    
-    const handleCarNo = (text) => {
-        setCarNo(text);
+  useEffect(() => {
+    if (category.label === "Cycle") {
+      setCarNoForm(false);
+    } else if (category.label !== "Cycle") {
+      setCarNoForm(true);
     }
-    
-    return (
-                 <View style={{ marginTop: 20 }}>
-              
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
-              <View style={{flexDirection:'column',width:'47%'}}>
-            <AppText color='white' fontWeight={'200'} fontSize={12}>Customer Name</AppText>
-            {/* <AppTextInput icon={'human-male'} placeholder="Customer Name"  /> */}
-            <CustomerPicker
-                  selectedItem={customer}
-                  onSelectedItem={(customer)=>setCustomer(customer)}
-                  items={customers}
-                  customer
-                  icon={'human-male'}
-                  placeholder={'Customer Name'}
-                />
-            </View>
-             <View style={{flexDirection:'column',width:'47%'}}>
-            <AppText color='white' fontWeight={'200'} fontSize={12}>Customer Id</AppText>
-           <CustomerPicker
-                  selectedItem={customer}
-                  onSelectedItem={(customer)=>setCustomer(customer)}
-                  items={customers}
-                  customerId
-                  icon={'id-card'}
-                  placeholder={'Customer Id'}
-                />
-          </View>
-          </View>
-          <AppTextInput onSearch={handleCarNo} icon={'car'} placeholder="Car No"/>
-          <AppPicker
-          selectedItem={category}
-          onSelectedItem={(item)=>setCategory(item)}
-          items={categories}
-          categories
-          icon="apps"
-          placeholder={"Categories"}
-         />
+    setPremitFormInfo({
+      couObjId: customer._id,
+      couName: customer.cou_name,
+      cou_id: customer.cou_id,
+      vehicleType: category.label,
+      carNo: carNo,
+      cashType: paymentNo,
+    });
+  }, [customer, category, carNo, paymentNo]);
 
-           {
-                            chooseOne && <View style={{
-                                marginTop: 5,
-                                borderRadius: 5,
-                                padding:3,
-                                backgroundColor: color.activeColor,
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: 10,
-                            }}>
-                                 <MaterialCommunityIcons name='information' size={30} color={color.yello} />
-                                <Text style={{
-                                fontSize: 16,
-                                color: color.screenbg,
-                                fontWeight: '300',
-                            }}>
-                                Individual customer can't take debt!</Text>
-                            </View>
-                        }
-          <PaymentMethod getValue={setPyamentNo}/>
-               
-           <Button disabled={permitButtonDisable} title={"Permit"} width={20} color={color.activeColor} onPress={handlePermit} />
-            </View>
-    );
+  const handleCarNo = (text) => {
+    setCarNo(text);
+  };
+
+  return (
+    <View style={{ marginTop: 20 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginTop: 10,
+        }}
+      >
+        <View style={{ flexDirection: "column", width: "47%" }}>
+          <AppText color="white" fontWeight={"200"} fontSize={12}>
+            Customer Name
+          </AppText>
+          {/* <AppTextInput icon={'human-male'} placeholder="Customer Name"  /> */}
+          <CustomerPicker
+            selectedItem={customer}
+            onSelectedItem={(customer) => setCustomer(customer)}
+            items={customers}
+            customer
+            icon={"human-male"}
+            placeholder={"Customer Name"}
+          />
+        </View>
+        <View style={{ flexDirection: "column", width: "47%" }}>
+          <AppText color="white" fontWeight={"200"} fontSize={12}>
+            Customer Id
+          </AppText>
+          <CustomerPicker
+            selectedItem={customer}
+            onSelectedItem={(customer) => setCustomer(customer)}
+            items={customers}
+            customerId
+            icon={"id-card"}
+            placeholder={"Customer Id"}
+          />
+        </View>
+      </View>
+      <AppTextInput onSearch={handleCarNo} icon={"car"} placeholder="Car No" />
+      <AppPicker
+        selectedItem={category}
+        onSelectedItem={(item) => setCategory(item)}
+        items={categories}
+        categories
+        icon="apps"
+        placeholder={"Categories"}
+      />
+
+      {chooseOne && (
+        <View
+          style={{
+            marginTop: 5,
+            borderRadius: 5,
+            padding: 3,
+            backgroundColor: color.activeColor,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 10,
+          }}
+        >
+          <MaterialCommunityIcons
+            name="information"
+            size={30}
+            color={color.yello}
+          />
+          <Text
+            style={{
+              fontSize: 16,
+              color: color.screenbg,
+              fontWeight: "300",
+            }}
+          >
+            Individual customer can't take debt!
+          </Text>
+        </View>
+      )}
+      <PaymentMethod getValue={setPyamentNo} />
+
+      <Button
+        disabled={permitButtonDisable}
+        title={"Permit"}
+        width={20}
+        color={color.activeColor}
+        onPress={handlePermit}
+      />
+    </View>
+  );
 };
 
 // define your styles
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
-    },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#2c3e50",
+  },
 });
 
 //make this component available to the app

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FMS",
-    "slug": "realtimefms",
+    "slug": "fms",
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/adaptive-icon.png",
